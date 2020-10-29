@@ -6,6 +6,9 @@ const mime = require('mime-types');
 const crypto = require("crypto");
 const sharp = require("sharp");
 const ffmpeg = require("fluent-ffmpeg");
+const {
+    compress
+} = require("compress-images/promise");
 
 run();
 
@@ -102,7 +105,6 @@ function start(client) {
             const decryptFile = await client.decryptFile(message);
             const id = crypto.randomBytes(16).toString("hex");
             const file = `${id}.${mime.extension(message.mimetype)}`;
-            const fileGif = `${id}.gif`;
 
             await fs.writeFile(`./temp/${file}`, decryptFile, (err) => {
                 if (err) {
@@ -113,9 +115,8 @@ function start(client) {
             await new Promise((resolve, reject) => {
                 ffmpeg(`./temp/${file}`)
                     .setFfmpegPath('./ffmpeg.exe')
-                    .outputOption("-vf", "scale=512:512:flags=lanczos,fps=15")
-                    //.outputOption("-vf", "scale=512:512:force_original_aspect_ratio=decrease,pad=512:512:-1:-1:color=black@0.0,format=rgba,fps=15")
-                    .save(`./temp/${fileGif}`)
+                    .complexFilter(`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`)
+                    .save(`./temp/${id}.gif`)
                     .on('error', (err) => {
                         console.log(`[ffmpeg] error: ${err.message}`);
                         reject(err);
@@ -126,17 +127,61 @@ function start(client) {
                     });
             });
 
-            await client
-                .sendImageAsStickerGif(message.from, `./temp/${fileGif}`)
-                .then((result) => {
-                    console.log('Result: ', result);
-                })
-                .catch((erro) => {
-                    console.error('Error when sending: ', erro);
+            const compressGif = async (onProgress) => {
+                const result = await compress({
+                    source: `./temp/${id}.gif`,
+                    destination: `./temp/opt`,
+                    onProgress,
+                    enginesSetup: {
+                        jpg: {
+                            engine: "mozjpeg",
+                            command: ["-quality", "60"]
+                        },
+                        png: {
+                            engine: "pngquant",
+                            command: ["--quality=20-50", "-o"]
+                        },
+                        svg: {
+                            engine: "svgo",
+                            command: "--multipass"
+                        },
+                        gif: {
+                            engine: "gifsicle",
+                            command: ['--optimize', '--lossy=80']
+                        }
+
+                    }
                 });
 
-            // await fs.unlinkSync(`./temp/${file}`);
-            // await fs.unlinkSync(`./temp/${fileGif}`); 
+                const {
+                    statistics,
+                    errors
+                } = result;
+            };
+
+            await compressGif(async (error, statistic, completed) => {
+                if (error) {
+                    console.log('Error happen while processing file');
+                    console.log(error);
+                    return;
+                }
+
+                console.log('Sucefully processed file');
+
+                console.log(statistic)
+
+                await client
+                    .sendImageAsStickerGif(message.from, statistic.path_out_new)
+                    .then((result) => {
+                        console.log('Result: ', result);
+                    })
+                    .catch((erro) => {
+                        console.error('Error when sending: ', erro);
+                    });
+                await fs.unlinkSync(statistic.path_out_new); 
+            });
+            await fs.unlinkSync(`./temp/${file}`);
+            await fs.unlinkSync(`./temp/${id}.gif`); 
         }
     });
 }

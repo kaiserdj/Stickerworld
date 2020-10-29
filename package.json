@@ -10,7 +10,10 @@
   "description": "",
   "dependencies": {
     "axios": "^0.19.2",
+    "compress-images": "^1.9.5",
     "fluent-ffmpeg": "^2.1.2",
+    "gifsicle": "^5.1.0",
+    "pngquant-bin": "^6.0.0",
     "progress": "^2.0.3",
     "sharp": "^0.26.2",
     "venom-bot": "^2.0.18"
