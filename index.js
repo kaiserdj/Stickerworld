@@ -1,10 +1,12 @@
 const venom = require('venom-bot');
 const fs = require('fs');
+const glob = require("glob");
 const Axios = require('axios');
 const ProgressBar = require('progress');
 const Zip = require('node-7z');
 const mime = require('mime-types');
 const crypto = require("crypto");
+const Jimp = require("jimp");
 const sharp = require("sharp");
 const ffmpeg = require("fluent-ffmpeg");
 const {
@@ -161,9 +163,70 @@ async function genSticker(client, message) {
                 });
         });
 
+        await new Promise((resolve, reject) => {
+            ffmpeg(`./temp/${id}.gif`)
+                .save(`./temp/ext${id}%d.png`)
+                .on('error', (err) => {
+                    console.log(`[ffmpeg] error: ${err.message}`);
+                    reject(err);
+                })
+                .on('end', () => {
+                    console.log('[ffmpeg] finished');
+                    resolve();
+                });
+        });
+
+        console.log("Color treated");
+        const frame1 = await Jimp.read(`./temp/ext${id}1.png`);
+        for (let i = 1; i < 320; i++) {
+            for (let j = 1; j < 320; j++) {
+                let colors = await Jimp.intToRGBA(frame1.getPixelColor(i, j))
+                if (colors.r > 155) {
+                    colors.r = colors.r - 5
+                } else {
+                    colors.r = colors.r + 5
+                }
+                if (colors.g > 155) {
+                    colors.g = colors.g - 5
+                } else {
+                    colors.g = colors.g + 5
+                }
+                if (colors.b > 155) {
+                    colors.b = colors.b - 5
+                } else {
+                    colors.b = colors.b + 5
+                }
+                if (colors.a > 155) {
+                    colors.a = colors.a - 5
+                } else {
+                    colors.a = colors.a + 5
+                }
+
+                let hex = await Jimp.rgbaToInt(colors.r, colors.g, colors.b, colors.a)
+
+                await frame1.setPixelColor(hex, i, j)
+            }
+        }
+        await frame1.write(`./temp/ext${id}1.png`)
+
+        await new Promise((resolve, reject) => {
+            ffmpeg(`./temp/ext${id}%d.png`)
+                .complexFilter(`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`)
+                .fpsOutput(15)
+                .save(`./temp/${id}mod.gif`)
+                .on('error', (err) => {
+                    console.log(`[ffmpeg] error: ${err.message}`);
+                    reject(err);
+                })
+                .on('end', () => {
+                    console.log('[ffmpeg] finished');
+                    resolve();
+                });
+        });
+
         const compressGif = async (onProgress) => {
             const result = await compress({
-                source: `./temp/${id}.gif`,
+                source: `./temp/${id}mod.gif`,
                 destination: `./temp/opt`,
                 onProgress,
                 enginesSetup: {
@@ -212,9 +275,12 @@ async function genSticker(client, message) {
                 .catch((erro) => {
                     console.error('Error when sending: ', erro);
                 });
-            await fs.unlinkSync(statistic.path_out_new);
+
         });
-        await fs.unlinkSync(`./temp/${file}`);
-        await fs.unlinkSync(`./temp/${id}.gif`);
+        await glob.Glob(`./temp/*${id}*`, async function (er, files) {
+            files.forEach(file => {
+                fs.unlinkSync(file);
+            });
+        });
     }
 }
