@@ -14,10 +14,11 @@
     "fluent-ffmpeg": "^2.1.2",
     "gifsicle": "^5.1.0",
     "jimp": "^0.16.1",
+    "mime-types": "^2.1.27",
     "node-7z": "^2.1.2",
     "pngquant-bin": "^6.0.0",
     "progress": "^2.0.3",
     "sharp": "^0.26.2",
-    "venom-bot": "^2.0.18"
+    "venom-bot": "^2.0.19"
   }
 }
