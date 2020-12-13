@@ -1,0 +1,11 @@
+{
+    "lang": "es",
+    "cleanTemp": true,
+    "headless": false,
+    "debug": true,
+    "consoleAnimations": true,
+    "cleanSession": true,
+    "workInGroups": true,
+    "onIncomingCall": true,
+    "maxSizeVideo": 20
+}

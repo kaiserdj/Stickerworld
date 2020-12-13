@@ -109,8 +109,8 @@ async function genSticker(client, message) {
 
         await sharp(decryptFile)
             .resize({
-                width: 800,
-                height: 800,
+                width: 512,
+                height: 512,
                 fit: 'contain',
                 background: {
                     r: 255,
@@ -151,8 +151,8 @@ async function genSticker(client, message) {
         await new Promise((resolve, reject) => {
             ffmpeg(`./temp/${file}`)
                 .setFfmpegPath('./tools/ffmpeg/ffmpeg.exe')
-                .complexFilter(`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`)
-                .save(`./temp/${id}.gif`)
+                .complexFilter(`scale='min(512,iw)':min'(512,ih)':force_original_aspect_ratio=decrease,fps=15, pad=512:512:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`)
+                .save(`./temp/${id}.webp`)
                 .on('error', (err) => {
                     console.log(`[ffmpeg] error: ${err.message}`);
                     reject(err);
@@ -164,7 +164,7 @@ async function genSticker(client, message) {
         });
 
         await new Promise((resolve, reject) => {
-            ffmpeg(`./temp/${id}.gif`)
+            ffmpeg(`./temp/${id}.webp`)
                 .save(`./temp/ext${id}%d.png`)
                 .on('error', (err) => {
                     console.log(`[ffmpeg] error: ${err.message}`);
@@ -207,13 +207,13 @@ async function genSticker(client, message) {
                 await frame1.setPixelColor(hex, i, j)
             }
         }
-        await frame1.write(`./temp/ext${id}1.png`)
+        await frame1.write(`./temp/ext${id}1.png`);
 
         await new Promise((resolve, reject) => {
             ffmpeg(`./temp/ext${id}%d.png`)
-                .complexFilter(`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`)
+                .complexFilter(`scale='min(512,iw)':min'(512,ih)':force_original_aspect_ratio=decrease,fps=15, pad=512:512:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`)
                 .fpsOutput(15)
-                .save(`./temp/${id}mod.gif`)
+                .save(`./temp/${id}mod.webp`)
                 .on('error', (err) => {
                     console.log(`[ffmpeg] error: ${err.message}`);
                     reject(err);
@@ -224,59 +224,87 @@ async function genSticker(client, message) {
                 });
         });
 
-        const compressGif = async (onProgress) => {
-            const result = await compress({
-                source: `./temp/${id}mod.gif`,
-                destination: `./temp/opt`,
-                onProgress,
-                enginesSetup: {
-                    jpg: {
-                        engine: "mozjpeg",
-                        command: ["-quality", "60"]
-                    },
-                    png: {
-                        engine: "pngquant",
-                        command: ["--quality=20-50", "-o"]
-                    },
-                    svg: {
-                        engine: "svgo",
-                        command: "--multipass"
-                    },
-                    gif: {
-                        engine: "gifsicle",
-                        command: ['--optimize', '--lossy=80']
-                    }
-
-                }
+        await tryGif(async () => {
+            await new Promise((resolve, reject) => {
+                ffmpeg(`./temp/ext${id}%d.png`)
+                    .complexFilter(`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`)
+                    .fpsOutput(15)
+                    .save(`./temp/${id}mod.gif`)
+                    .on('error', (err) => {
+                        console.log(`[ffmpeg] error: ${err.message}`);
+                        reject(err);
+                    })
+                    .on('end', () => {
+                        console.log('[ffmpeg] finished');
+                        resolve();
+                    });
             });
 
-            const {
-                statistics,
-                errors
-            } = result;
-        };
-
-        await compressGif(async (error, statistic, completed) => {
-            if (error) {
-                console.log('Error happen while processing file');
-                console.log(error);
-                return;
-            }
-
-            console.log('Sucefully processed file');
-
-            console.log(statistic)
-
-            await client
-                .sendImageAsStickerGif(message.from, statistic.path_out_new)
-                .then((result) => {
-                    console.log('Result: ', result);
-                })
-                .catch((erro) => {
-                    console.error('Error when sending: ', erro);
+            const compressGif = async (onProgress) => {
+                const result = await compress({
+                    source: `./temp/${id}mod.gif`,
+                    destination: `./temp/opt`,
+                    onProgress,
+                    enginesSetup: {
+                        jpg: {
+                            engine: "mozjpeg",
+                            command: ["-quality", "60"]
+                        },
+                        png: {
+                            engine: "pngquant",
+                            command: ["--quality=20-50", "-o"]
+                        },
+                        svg: {
+                            engine: "svgo",
+                            command: "--multipass"
+                        },
+                        gif: {
+                            engine: "gifsicle",
+                            command: ['--optimize', '--lossy=80']
+                        }
+    
+                    }
                 });
-
+    
+                const {
+                    statistics,
+                    errors
+                } = result;
+            };
+    
+            await compressGif(async (error, statistic, completed) => {
+                if (error) {
+                    console.log('Error happen while processing file');
+                    console.log(error);
+                    return;
+                }
+    
+                console.log('Sucefully processed file');
+    
+                console.log(statistic)
+    
+                await client
+                    .sendImageAsStickerGif(message.from, statistic.path_out_new)
+                    .then((result) => {
+                        console.log('Result: ', result);
+                    })
+                    .catch((erro) => {
+                        console.error('Error when sending: ', erro);
+                    });
+    
+            });
         });
+
+        await client
+            .sendImageAsStickerGif(message.from, `./temp/${id}mod.webp`)
+            .then((result) => {
+                console.log('Result: ', result);
+            })
+            .catch(async (erro) => {
+                console.error('Error when sending: ', erro);
+                await tryGif();
+            });
+
         await glob.Glob(`./temp/*${id}*`, async function (er, files) {
             files.forEach(file => {
                 fs.unlinkSync(file);
