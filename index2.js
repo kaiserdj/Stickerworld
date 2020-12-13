@@ -6,7 +6,8 @@ const tools = require("./lib/tools");
 (async () => {
     try {
         await start.check();
-        await whatsapp.launch();
+        const client = await whatsapp.launch();
+        await whatsapp.start(client);
     } catch (err) {
         tools.conlog_error(err);
     }
