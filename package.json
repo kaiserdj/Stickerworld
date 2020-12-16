@@ -13,6 +13,7 @@
     "async-constructor": "^0.4.2",
     "axios": "^0.21.0",
     "compress-images": "^1.9.5",
+    "fast-glob": "^3.2.4",
     "fluent-ffmpeg": "^2.1.2",
     "gifsicle": "^5.1.0",
     "i18next": "^19.8.4",
@@ -22,7 +23,7 @@
     "pngquant-bin": "^6.0.0",
     "progress": "^2.0.3",
     "sharp": "^0.26.3",
-    "venom-bot": "^2.1.2",
+    "venom-bot": "^2.2.1",
     "winston": "^3.3.3"
   }
 }
