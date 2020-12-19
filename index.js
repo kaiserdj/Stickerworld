@@ -9,9 +9,7 @@ const crypto = require("crypto");
 const Jimp = require("jimp");
 const sharp = require("sharp");
 const ffmpeg = require("fluent-ffmpeg");
-const {
-    compress
-} = require("compress-images/promise");
+const { compress } = require("compress-images/promise");
 
 run();
 
@@ -262,27 +260,27 @@ async function genSticker(client, message) {
                             engine: "gifsicle",
                             command: ['--optimize', '--lossy=80']
                         }
-    
+
                     }
                 });
-    
+
                 const {
                     statistics,
                     errors
                 } = result;
             };
-    
+
             await compressGif(async (error, statistic, completed) => {
                 if (error) {
                     console.log('Error happen while processing file');
                     console.log(error);
                     return;
                 }
-    
+
                 console.log('Sucefully processed file');
-    
+
                 console.log(statistic)
-    
+
                 await client
                     .sendImageAsStickerGif(message.from, statistic.path_out_new)
                     .then((result) => {
@@ -291,7 +289,7 @@ async function genSticker(client, message) {
                     .catch((erro) => {
                         console.error('Error when sending: ', erro);
                     });
-    
+
             });
         });
 
@@ -305,7 +303,7 @@ async function genSticker(client, message) {
                 await tryGif();
             });
 
-        await glob.Glob(`./temp/*${id}*`, async function (er, files) {
+        await glob.Glob(`./temp/*${id}*`, async function(er, files) {
             files.forEach(file => {
                 fs.unlinkSync(file);
             });
