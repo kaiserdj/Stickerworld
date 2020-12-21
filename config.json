@@ -1,8 +1,8 @@
 {
     "lang": "es",
     "cleanTemp": true,
-    "headless": false,
-    "debug": true,
+    "headless": true,
+    "debug": false,
     "consoleAnimations": true,
     "cleanSession": true,
     "workInGroups": true,
