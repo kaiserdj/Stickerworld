@@ -51,6 +51,11 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/ry2n711"><img src="https://avatars1.githubusercontent.com/u/36896768?v=4" width="100px;" alt=""/><br /><sub><b>Ryan almalki</b></sub></a><br /><a href="#financial-ry2n711" title="Financial">💵</a></td>
+  </tr>
+</table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
