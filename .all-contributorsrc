@@ -5,10 +5,19 @@
   "imageSize": 100,
   "commit": false,
   "contributors": [
+    {
+      "login": "kaiserdj",
+      "name": "Kaiserdj",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/5487950?v=4",
+      "profile": "http://kaiserdj.github.io",
+      "contributions": [
+        "code"
+      ]
+    }
   ],
   "contributorsPerLine": 5,
   "projectName": "Stickerworld",
-  "projectOwner": "Kaiserdj",
+  "projectOwner": "kaiserdj",
   "repoType": "github",
   "repoHost": "https://github.com",
   "skipCi": true,
