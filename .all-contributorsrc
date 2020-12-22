@@ -6,12 +6,14 @@
   "commit": false,
   "contributors": [
     {
-      "login": "ry2n711",
-      "name": "Ryan almalki",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/36896768?v=4",
-      "profile": "https://github.com/ry2n711",
+      "login": "kaiserdj",
+      "name": "Kaiserdj",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/5487950?v=4",
+      "profile": "http://kaiserdj.github.io",
       "contributions": [
-        "financial"
+        "code",
+        "test",
+        "projectManagement"
       ]
     }
   ],
