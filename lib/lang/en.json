@@ -1,0 +1,8 @@
+{
+    "onIncomingCall": "Sorry, I still can't answer calls",
+    "Generating": "⚙️ Generating Sticker ⚙️",
+    "Video-reject": "Url video rejected because it is too heavy",
+    "Url-Reject": "Url rejected because no multimedia content was detected",
+    "Video-Url-Reject": "Url rejected because the video is too heavy",
+    "Url-No-Detected": "Url not detected"
+}
