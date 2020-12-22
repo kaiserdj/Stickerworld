@@ -1,0 +1,3 @@
+files:
+  - source: /lib/lang/*
+    translation: /lib/lang/%two_letters_code%
