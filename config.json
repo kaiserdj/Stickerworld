@@ -1,0 +1,12 @@
+{
+    "lang": "en",
+    "cleanTemp": true,
+    "headless": true,
+    "debug": false,
+    "consoleAnimations": true,
+    "cleanSession": true,
+    "workInGroups": true,
+    "onIncomingCall": true,
+    "maxSizeVideo": 20,
+    "notifyRejectionStickerGeneration": true
+}
