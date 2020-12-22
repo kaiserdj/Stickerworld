@@ -1,0 +1,16 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+  ],
+  "contributorsPerLine": 5,
+  "projectName": "Stickerworld",
+  "projectOwner": "Kaiserdj",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "commitConvention": "none"
+}
