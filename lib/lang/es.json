@@ -1,3 +1,8 @@
 {
-    "onIncomingCall": "Lo siento, todavía no puedo contestar llamadas"
+    "onIncomingCall": "Lo siento, todavía no puedo contestar llamadas",
+    "Generating": "⚙️ Generando Sticker ⚙️",
+    "Video-reject": "Vídeo de Url rechazado porque es demasiado pesado",
+    "Url-Reject": "Url rechazada porque no se ha detectado contenido multimedia",
+    "Video-Url-Reject": "Url rechazada porque el video es demasiado pesado",
+    "Url-No-Detected": "No se ha detectado Url"
 }

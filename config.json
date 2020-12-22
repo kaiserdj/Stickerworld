@@ -7,5 +7,6 @@
     "cleanSession": true,
     "workInGroups": true,
     "onIncomingCall": true,
-    "maxSizeVideo": 20
+    "maxSizeVideo": 20,
+    "notifyRejectionStickerGeneration": true
 }
