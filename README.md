@@ -4,7 +4,7 @@
   <img align="center" src="https://user-images.githubusercontent.com/5487950/103039426-2fc51c00-4571-11eb-896e-0842b21b7a2c.png" alt="Logo" width="500" height="324">
 </p>
 <p align="right"><sub>
-  Design created by <a href="https://github.com/ry2n711">@ry2n711</a>
+  Design created by <a target="_blank" href="https://github.com/ry2n711">@ry2n711</a>
 </ub></p>
 
 Bot for whatsapp that automatically generates Sticker from the images or videos it receives
