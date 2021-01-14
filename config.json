@@ -8,5 +8,6 @@
     "workInGroups": true,
     "onIncomingCall": true,
     "maxSizeVideo": 20,
-    "notifyRejectionStickerGeneration": true
+    "notifyRejectionStickerGeneration": true,
+    "notifyUrlNotDetected": false
 }
