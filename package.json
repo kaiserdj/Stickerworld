@@ -9,17 +9,17 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "async-constructor": "^0.4.3",
+    "async-constructor": "^0.4.8",
     "axios": "^0.21.1",
-    "compress-images": "^1.9.5",
-    "fast-glob": "^3.2.4",
+    "compress-images": "^1.9.8",
+    "fast-glob": "^3.2.5",
     "fluent-ffmpeg": "^2.1.2",
-    "i18next": "^19.8.4",
+    "i18next": "^19.8.7",
     "jimp": "0.16.1",
     "mime-types": "^2.1.28",
     "node-7z": "^2.1.2",
     "progress": "^2.0.3",
-    "sharp": "^0.27.0",
+    "sharp": "^0.27.1",
     "venom-bot": "^2.2.3",
     "winston": "^3.3.3"
   }
