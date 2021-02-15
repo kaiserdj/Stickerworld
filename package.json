@@ -20,7 +20,7 @@
     "node-7z": "^2.1.2",
     "progress": "^2.0.3",
     "sharp": "^0.27.1",
-    "venom-bot": "^2.2.3",
+    "venom-bot": "^2.2.4",
     "winston": "^3.3.3"
   }
 }
