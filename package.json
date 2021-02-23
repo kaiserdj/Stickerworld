@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "7zip-bin": "^5.1.0",
     "async-constructor": "^0.4.8",
     "axios": "^0.21.1",
     "compress-images": "^1.9.8",
@@ -19,6 +20,7 @@
     "mime-types": "^2.1.29",
     "node-7z": "^2.1.2",
     "progress": "^2.0.3",
+    "semver": "^7.3.4",
     "sharp": "^0.27.2",
     "venom-bot": "^2.2.6",
     "winston": "^3.3.3"
