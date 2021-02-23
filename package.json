@@ -1,10 +1,9 @@
 {
   "name": "stickerworld",
-  "version": "2.0.1",
+  "version": "2.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "test": "echo \"No tests yet\""
+    "start": "node index"
   },
   "author": "Kaiserdj",
   "license": "ISC",
