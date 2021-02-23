@@ -4,4 +4,4 @@ tokens
 session
 temp
 package-lock.json
-tools/ffmpeg
+ffmpeg
