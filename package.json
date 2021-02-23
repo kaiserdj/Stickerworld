@@ -8,7 +8,27 @@
   },
   "author": "Kaiserdj",
   "license": "ISC",
-  "description": "",
+  "description": "Bot for whatsapp that automatically generates Sticker from the images or videos it receives",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaiserdj/Stickerworld.git"
+  },
+  "keywords": [
+    "whatsapp",
+    "javascript",
+    "bot",
+    "sticker bot",
+    "bot",
+    "automatization",
+    "puppeteer"
+  ],
+  "bugs": {
+    "url": "https://github.com/kaiserdj/Stickerworld/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/kaiserdj/Stickerworld",
   "dependencies": {
     "7zip-bin": "^5.1.0",
     "async-constructor": "^0.4.8",
