@@ -37,6 +37,7 @@
     "fast-glob": "^3.2.5",
     "fluent-ffmpeg": "^2.1.2",
     "i18next": "^19.8.9",
+    "is-valid-http-url": "^1.0.3",
     "jimp": "0.16.1",
     "mime-types": "^2.1.29",
     "node-7z": "^2.1.2",
