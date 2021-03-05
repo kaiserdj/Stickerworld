@@ -1,6 +1,6 @@
 {
   "name": "stickerworld",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "main": "index.js",
   "scripts": {
     "start": "node index",
@@ -31,12 +31,12 @@
   "homepage": "https://github.com/kaiserdj/Stickerworld",
   "dependencies": {
     "7zip-bin": "^5.1.0",
-    "async-constructor": "^0.4.8",
+    "async-constructor": "^0.4.9",
     "axios": "^0.21.1",
     "compress-images": "^1.9.8",
     "fast-glob": "^3.2.5",
     "fluent-ffmpeg": "^2.1.2",
-    "i18next": "^19.8.9",
+    "i18next": "^19.9.1",
     "is-valid-http-url": "^1.0.3",
     "jimp": "0.16.1",
     "mime-types": "^2.1.29",
@@ -44,7 +44,7 @@
     "progress": "^2.0.3",
     "semver": "^7.3.4",
     "sharp": "^0.27.2",
-    "venom-bot": "^2.2.6",
+    "venom-bot": "^3.0.8",
     "winston": "^3.3.3"
   }
 }
