@@ -61,13 +61,15 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="http://kaiserdj.github.io"><img src="https://avatars2.githubusercontent.com/u/5487950?v=4" width="100px;" alt=""/><br /><sub><b>Kaiserdj</b></sub></a><br /><a href="https://github.com/kaiserdj/Stickerworld/commits?author=kaiserdj" title="Code">💻</a> <a href="https://github.com/kaiserdj/Stickerworld/commits?author=kaiserdj" title="Tests">⚠️</a> <a href="#projectManagement-kaiserdj" title="Project Management">📆</a> <a href="#tool-kaiserdj" title="Tools">🔧</a></td>
-    <td align="center"><a href="https://github.com/ry2n711"><img src="https://avatars1.githubusercontent.com/u/36896768?v=4" width="100px;" alt=""/><br /><sub><b>Ryan almalki</b></sub></a><br /><a href="#ideas-ry2n711" title="Ideas, Planning, & Feedback">🤔</a> <a href="#financial-ry2n711" title="Financial">💵</a> <a href="#design-ry2n711" title="Design">🎨</a></td>
+    <td align="center"><a href="http://kaiserdj.github.io"><img src="https://avatars2.githubusercontent.com/u/5487950?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kaiserdj</b></sub></a><br /><a href="https://github.com/kaiserdj/Stickerworld/commits?author=kaiserdj" title="Code">💻</a> <a href="https://github.com/kaiserdj/Stickerworld/commits?author=kaiserdj" title="Tests">⚠️</a> <a href="#projectManagement-kaiserdj" title="Project Management">📆</a> <a href="#tool-kaiserdj" title="Tools">🔧</a></td>
+    <td align="center"><a href="https://github.com/ry2n711"><img src="https://avatars1.githubusercontent.com/u/36896768?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ryan almalki</b></sub></a><br /><a href="#ideas-ry2n711" title="Ideas, Planning, & Feedback">🤔</a> <a href="#financial-ry2n711" title="Financial">💵</a> <a href="#design-ry2n711" title="Design">🎨</a></td>
+    <td align="center"><a href="http://www.simonedanna.it"><img src="https://avatars.githubusercontent.com/u/31928695?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Simone D'Anna</b></sub></a><br /><a href="#translation-simone7121" title="Translation">🌍</a></td>
   </tr>
 </table>
 
-<!-- markdownlint-enable -->
+<!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
