@@ -27,6 +27,15 @@
         "financial",
         "design"
       ]
+    },
+    {
+      "login": "simone7121",
+      "name": "Simone D'Anna",
+      "avatar_url": "https://avatars.githubusercontent.com/u/31928695?v=4",
+      "profile": "http://www.simonedanna.it",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 5,
