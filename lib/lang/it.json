@@ -1,0 +1,8 @@
+{
+    "onIncomingCall": "Scusami, non posso rispondere alle chiamate in arrivo. 📞",
+    "Generating": "⚙️ Generazione Sticker In Corso ... ⚙️",
+    "Video-reject": "Il video e' stato rifiutato, perche' le dimensioni sono troppo larghe.",
+    "Url-Reject": "L'URL e' stato rifiutato, perche' non e' stato trovato nessun file multimediale.",
+    "Video-Url-Reject": "L'URL e' stato rifiutato, perche' le dimensioni del file sono troppo larghe.",
+    "Url-No-Detected": "Nessun URL e' stato trovato."
+}
