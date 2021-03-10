@@ -9,6 +9,9 @@
 
 Bot for whatsapp that automatically generates Sticker from the images or videos it receives
 
+## What i've added ? 
+Italian Traduction
+
 ## Features
 
 | Sticker Creator |                Feature           |                                                         Example                                                     |
