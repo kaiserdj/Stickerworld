@@ -1,4 +1,4 @@
-on: [push, pull_request]
+on: [push]
 name: Build, Test and maybe Publish
 jobs:
   test:
@@ -26,25 +26,14 @@ jobs:
       run: npm_config_yes=true npx best-test@latest
   publish:
     name: Publish
-    needs: test
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' )
     steps:
-    - uses: actions/checkout@v2
-    - name: Cache node_modules
-      id: cache-modules
-      uses: actions/cache@v1
-      with:
-        path: node_modules
-        key: 12.x-${{ runner.OS }}-build-${{ hashFiles('package.json') }}
-    - name: Build
-      if: steps.cache-modules.outputs.cache-hit != 'true'
-      run: npm install
-    - name: Test
-      run: npm_config_yes=true npx best-test@latest
-
-    - name: Publish
-      uses: mikeal/merge-release@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - run: npm install
+      - run: npm test
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_AUTH_TOKEN }}       
