@@ -11,5 +11,12 @@
     "onIncomingCall": true,
     "maxSizeVideo": 20,
     "notifyRejectionStickerGeneration": true,
-    "notifyUrlNotDetected": false
+    "notifyUrlNotDetected": false,
+    "options": {
+        "ImgToSticker": true,
+        "ImgUrlToSticker": true,
+        "GifToSticker": true,
+        "VideoToSticker": true,
+        "VideoUrlToSticker": true
+    }
 }
