@@ -6,6 +6,8 @@
     "consoleAnimations": true,
     "cleanSession": true,
     "workInGroups": true,
+    "activeCommand": true,
+    "customActiveCommand": ["!Sticker", "!sticker"],
     "onIncomingCall": true,
     "maxSizeVideo": 20,
     "notifyRejectionStickerGeneration": true,
