@@ -37,3 +37,15 @@ jobs:
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: nodejs project information
+        id: projectinfo
+        uses: gregoranders/nodejs-project-info@v0.0.11
+      - name: create release
+        id: createrelease
+        uses: gregoranders/nodejs-create-release@v0.0.11
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag: v${{ steps.projectinfo.outputs.version }}
+          name: ${{ steps.projectinfo.outputs.name }} - ${{ steps.projectinfo.outputs.version }} Release
+          target: ${{ github.ref }}
