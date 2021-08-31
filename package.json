@@ -29,20 +29,20 @@
   },
   "homepage": "https://github.com/kaiserdj/Stickerworld",
   "dependencies": {
-    "@ffmpeg-installer/ffmpeg": "^1.0.20",
-    "@ffprobe-installer/ffprobe": "^1.1.0",
-    "async-constructor": "^0.4.14",
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@ffprobe-installer/ffprobe": "^1.2.0",
+    "async-constructor": "^0.4.16",
     "axios": "^0.21.1",
     "compress-images": "^1.9.9",
-    "fast-glob": "^3.2.5",
+    "fast-glob": "^3.2.7",
     "fluent-ffmpeg": "^2.1.2",
-    "i18next": "^20.3.1",
+    "i18next": "^20.5.0",
     "is-valid-http-url": "^1.0.3",
     "jimp": "0.16.1",
-    "mime-types": "^2.1.31",
+    "mime-types": "^2.1.32",
     "semver": "^7.3.5",
     "sharp": "^0.28.3",
-    "venom-bot": "^3.0.18",
+    "venom-bot": "^3.1.2",
     "winston": "^3.3.3"
   }
 }
